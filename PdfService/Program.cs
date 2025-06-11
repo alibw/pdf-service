@@ -1,3 +1,4 @@
+using System.Data;
 using Microsoft.AspNetCore.WebUtilities;
 using Newtonsoft.Json;
 using PdfService;
@@ -32,7 +33,7 @@ app.MapPost("/Print", async (HttpContext context) =>
     {
         if (part.ContentType == "application/json")
         {
-            data = JsonConvert.DeserializeObject(part.Content);
+            data = JsonConvert.DeserializeObject<DataTable>(part.Content);
         }
         else if (part.ContentType == "application/xml")
         {
